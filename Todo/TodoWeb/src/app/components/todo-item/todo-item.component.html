@@ -1,0 +1,10 @@
+<div class="todo-wrapper">
+  <div *ngIf=!todo.isComplete>
+    <button class="openTodo" (click)="completeTodo()">open</button> {{todo.name}}
+  </div>
+  <div *ngIf=todo.isComplete>
+    <button class="completeTodo" (click)="reopenTodo()">done</button> {{todo.name}}
+  </div>
+
+  <!-- <button (click)="deleteTodo()">delete</button> -->
+</div>

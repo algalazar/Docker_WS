@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  db:
+    # verwende das Image mysql:5.7
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: somewordpress
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+
+  wordpress:
+    # dieser Service muss abhängig vom oben definierten Service sein
+    # verwende das Image wordpress:latest
+    # publiziere den Port 80 auf 8000
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+
+# das für die db verwendete Volume 'db_data' muss hier angegeben werden
