@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  api:
+    image: algalazar/todoapi:latest
+    ports:
+      - "5000:80"
+    volumes:
+      - ./db/:/app/db
+
+  web:
+    image: algalazar/todoweb:latest
+    ports:
+      - "8088:80"
